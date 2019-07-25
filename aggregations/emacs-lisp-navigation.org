@@ -1,4 +1,10 @@
 * emacs lisp navigation
+#+BEGIN_SRC emacs-lisp :async
+  (save-excursion
+      (search-forward "http://")
+      (setq url (thing-at-point 'url)))
+#+END_SRC
+
 #+BEGIN_SRC sh :async
   vim +/"\*\* navigation" "$NOTES/remember.org"
 #+END_SRC
