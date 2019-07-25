@@ -20,3 +20,10 @@
   # It already works
   apply "grep -q '^http'" "http://arxiv.org/pdf/cmp-lg/9708013v1"
 #+END_SRC
+
+
+** functional bash
+#+BEGIN_SRC sh :async
+  wrla "glob -b"
+  wrla1 "glob -b"
+#+END_SRC
