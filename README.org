@@ -1,0 +1,3 @@
+* My Rosetta Code
+
+This is my own collection of snippet aggregations, organised into categories for easy lookup.
