@@ -1,0 +1,4 @@
+* emacs lisp navigation
+#+BEGIN_SRC sh :async
+  vim +/"\*\* navigation" "$NOTES/remember.org"
+#+END_SRC
