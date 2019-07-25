@@ -1,0 +1,5 @@
+* unix
+** rmdir -- remove along with ancestors/descendents
+#+BEGIN_SRC sh :async
+  cd "$MYGIT/mullikine/my-rosetta-code"; rmdir -p lang/emacs-lisp-elisp
+#+END_SRC

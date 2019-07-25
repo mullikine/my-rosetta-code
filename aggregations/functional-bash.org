@@ -1,0 +1,22 @@
+* functional bash
+#+BEGIN_SRC sh
+  apply "grep -q '^http'" "http://arxiv.org/pdf/cmp-lg/9708013v1"
+  pcre-test "^http.*arxiv.*/pdf" "$CMD"
+
+  if tt "http://arxiv.org/pdf/cmp-lg/9708013v1" ~ "^http.*arxiv.*/pdf"; then
+      :
+  fi
+
+  if pcre-test "^http.*arxiv.*/pdf" "http://arxiv.org/pdf/cmp-lg/9708013v1"; then
+      :
+  fi
+#+END_SRC
+
+* DONE make it so ~apply~ also returns an exit code
+#+BEGIN_SRC sh
+  apply "fix-racket-doc-url | xc -i" "$@"
+  ap- "fix-racket-doc-url | xc -i" "$@"
+
+  # It already works
+  apply "grep -q '^http'" "http://arxiv.org/pdf/cmp-lg/9708013v1"
+#+END_SRC

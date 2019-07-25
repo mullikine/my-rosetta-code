@@ -1,0 +1,8 @@
+** filtering
+#+BEGIN_SRC emacs-lisp
+  (defun region-pipe (cmd)
+    "pipe region through shell command"
+    (if (not cmd)
+        (setq cmd "tm filter"))
+    (region-filter (lambda (input) (sh-notty (concat cmd) input))))
+#+END_SRC

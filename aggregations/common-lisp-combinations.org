@@ -1,0 +1,6 @@
+** common lisp -- combinations
+#+BEGIN_SRC sh
+  vim +/"\* CLI args combinations" "$NOTES/ws/common-lisp-clisp/remember.org"
+#+END_SRC
+
+It's more important though to make search funcitons.

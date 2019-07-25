@@ -1,0 +1,12 @@
+* sed
+** apply to nth char on the line
+Using sed, you can navigate to a
+particular offset in a line and make a
+substitution....
+
+#+BEGIN_SRC sh
+  sed 's/./A/24' myfile
+#+END_SRC
+
+This'll replace the 24th character on each
+line with 'A'

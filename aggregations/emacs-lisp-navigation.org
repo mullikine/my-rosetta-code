@@ -2,3 +2,25 @@
 #+BEGIN_SRC sh :async
   vim +/"\*\* navigation" "$NOTES/remember.org"
 #+END_SRC
+
+** navigation
+#+BEGIN_SRC sh
+  cd "$EMACSD/config"; ead save-excursion
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+  (save-excursion
+      (goto-char start)
+      (while (< (point) end)
+        (funcall fun (buffer-substring (line-beginning-position) (line-end-position)))
+        (forward-line 1)))
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+  (progn
+    (deactivate-mark)
+    (save-excursion
+      (delete-region min-pos max-pos)
+      (goto-char min-pos)
+      (insert (concat "(" sig ")"))))
+#+END_SRC
