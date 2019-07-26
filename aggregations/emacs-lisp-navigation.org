@@ -1,3 +1,6 @@
+* examples
+https://krsoninikhil.github.io/2018/12/15/easy-moving-from-vscode-to-emacs/
+
 * emacs lisp navigation
 #+BEGIN_SRC emacs-lisp :async
   (save-excursion
