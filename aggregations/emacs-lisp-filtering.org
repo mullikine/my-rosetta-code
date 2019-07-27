@@ -6,3 +6,99 @@
         (setq cmd "tm filter"))
     (region-filter (lambda (input) (sh-notty (concat cmd) input))))
 #+END_SRC
+
+** helm
+#+BEGIN_SRC emacs-lisp :async
+  (completing-read "test: " '(a b c d) nil t)
+  (completing-read "test: " '(a b c d) nil 'confirm)
+#+END_SRC
+
+*** default builtin helm -- it's not helm
+#+BEGIN_SRC emacs-lisp :async
+  (defun fz-must-match (list &optional prompt)
+    (setq prompt (or prompt ":"))
+    (completing-read prompt list nil t))
+
+  ;; This is very useful
+  (defun fz-default-return-query (list &optional prompt)
+    (setq prompt (or prompt ":"))
+    (completing-read prompt list nil 'confirm))
+#+END_SRC
+
+*** helm-comp-read -- the helm version
+#+BEGIN_SRC emacs-lisp :async
+  (defun fz-must-match (list &optional prompt)
+    (setq prompt (or prompt ":"))
+    (helm-comp-read prompt list :must-match t))
+
+  ;; This is very useful
+  (defun fz-default-return-query (list &optional prompt)
+    (setq prompt (or prompt ":"))
+    (helm-comp-read prompt list :must-match 'confirm))
+
+  ;; But I don't like confirm things
+  (defun fz-default-return-query (list &optional prompt)
+    (setq prompt (or prompt ":"))
+    (helm-comp-read prompt list :must-match 'nil))
+#+END_SRC
+
+** Most up-to-date
+#+BEGIN_SRC emacs-lisp :async
+  (defun fz (list &optional input b_full-frame prompt must-match)
+    ;; (helm-build-sync-source "test"
+    ;;   :candidates (scriptnames-list))
+    ;; Sources is a list of lists?
+    ;; '((scriptnames-list))
+    (if (stringp list)
+        (setq list (string2list list)))
+    (setq prompt (or prompt ":"))
+
+    ;; (helm :sources (helm-build-sync-source "-"
+    ;;                  :candidates list)
+    ;;       :input input
+    ;;       :prompt prompt
+    ;;       :full-frame b_full-frame
+    ;;       :candidate-number-limit nil
+    ;;       ;; :candidate-number-limit 500
+    ;;       :buffer "*fzf*")
+    (cl-fz list :initial-input input :full-frame b_full-frame :prompt prompt :must-match must-match))
+  ;; (fz '(a b c d) "" t "yo:")
+
+  ;; (defun fz-must-match (list &optional prompt)
+  ;;   (setq prompt (or prompt ":"))
+  ;;   (completing-read prompt list nil t))
+
+  ;; (defun fz-default-return-query (list &optional prompt)
+  ;;   (setq prompt (or prompt ":"))
+  ;;   (completing-read prompt list nil 'confirm))
+
+  ;; This is very useful
+  (cl-defun cl-fz (list &key prompt &key full-frame &key initial-input &key must-match)
+    (setq prompt (or prompt ":"))
+    (let ((helm-full-frame full-frame))
+      (helm-comp-read prompt list :must-match must-match :initial-input initial-input)))
+  (defalias 'fz-new 'cl-fz)
+
+  ;; (fz-new '(a b c d) :must-match t :prompt "yo:" :full-frame t)
+
+  (cl-defun fz-default-return-query (list &key prompt &key full-frame &key initial-input)
+    (fz-new list :prompt prompt :full-frame full-frame :initial-input initial-input))
+
+  (defun fz-default-return-query (list &optional prompt full-frame)
+    (setq prompt (or prompt ":"))
+    (let ((helm-full-frame full-frame))
+      (helm-comp-read prompt list :must-match nil)))
+#+END_SRC
+
+** region pipe
+#+BEGIN_SRC emacs-lisp :async
+  (defun filter-region-through-external-script ()
+    "docstring"
+    (interactive)
+    (if (region-active-p)
+        (let ((script
+               (read-string "!")))
+          (region-pipe script))))
+  
+  (define-key selected-keymap (kbd "\\!") #'filter-region-through-external-script)
+#+END_SRC
