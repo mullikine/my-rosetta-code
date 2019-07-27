@@ -1,0 +1,9 @@
+(defun get-yt-playlist (path)
+  (interactive (list (read-string "path:")))
+
+  (if (string-empty-p path) (setq path "[[https://www.youtube.com/playlist?list=PLGYGe2PKknX2kydiv28aq8dBXBWeJfxgg][The Lion King 2019 soundtrack - YouTube]]"))
+
+  (let ((result (e/chomp (sh-notty (concat "ci yt-list-playlist-urls " (e/q path))))))
+    (if (called-interactively-p 'any)
+        (message result)
+      result)))
