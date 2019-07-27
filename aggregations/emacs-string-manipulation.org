@@ -1,0 +1,6 @@
+* emacs lisp
+#+BEGIN_SRC emacs-lisp :async
+  (f-base "~/doc/index.org")
+  (f-no-ext "~/doc/index.org")
+  (s-chop-suffix ".org" "~/doc/index.org")
+#+END_SRC
