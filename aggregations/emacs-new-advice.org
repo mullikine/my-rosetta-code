@@ -1,0 +1,19 @@
+* after
+#+BEGIN_SRC emacs-lisp :async
+  (advice-add
+   'wiki-summary
+   :after '(lambda
+             (&rest args)
+             (call-interactively
+              'other-window)))
+#+END_SRC
+
+* before
+#+BEGIN_SRC emacs-lisp :async
+  (defun wrap2 (orig-fun &rest args)
+    (message "shr-copy-url called with args %S" args)
+    (let ((res (apply orig-fun args)))
+      (message "shr-copy-url returned %S" res)
+      res))
+  (advice-add 'shr-copy-url :around #'wrap2)
+#+END_SRC
