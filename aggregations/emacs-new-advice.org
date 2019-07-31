@@ -17,3 +17,25 @@
       res))
   (advice-add 'shr-copy-url :around #'wrap2)
 #+END_SRC
+
+* advice remove
+#+BEGIN_SRC emacs-lisp :async :results verbatim drawer
+  (advice-remove
+   'anaconda-mode-documentation-view
+   (lambda () (markdown-mode)))
+#+END_SRC
+
+* advice remove
+#+BEGIN_SRC emacs-lisp :async :results verbatim drawer
+  (defun sh/ad-unminimise-ex-parse (string &optional syntax start)
+    (setq string (umn string)))
+  
+  (advice-add 'evil-ex-parse :before 'sh/ad-unminimise-ex-parse)
+  (advice-remove 'evil-ex-parse 'sh/ad-unminimise-ex-parse)
+  
+  (defun sh/ad-unminimise-ex-parse-command (string)
+    (setq string (umn string)))
+  
+  (advice-add 'evil-ex-parse-command :before 'sh/ad-unminimise-ex-parse-command)
+  (advice-remove 'evil-ex-parse-command 'sh/ad-unminimise-ex-parse-command)
+#+END_SRC
