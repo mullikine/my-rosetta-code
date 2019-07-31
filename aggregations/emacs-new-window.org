@@ -1,0 +1,4 @@
+#+BEGIN_SRC emacs-lisp :async :results verbatim drawer
+  (with-help-window (help-buffer))
+  (with-temp-buffer-window (help-buffer) nil nil)
+#+END_SRC
