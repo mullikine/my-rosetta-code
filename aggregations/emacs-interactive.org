@@ -1,9 +1,23 @@
-(defun get-yt-playlist (path)
-  (interactive (list (read-string "path:")))
+#+BEGIN_SRC emacs-lisp :async :results verbatim drawer
+  (defun get-yt-playlist (path)
+    (interactive (list (read-string "path:")))
 
-  (if (string-empty-p path) (setq path "[[https://www.youtube.com/playlist?list=PLGYGe2PKknX2kydiv28aq8dBXBWeJfxgg][The Lion King 2019 soundtrack - YouTube]]"))
+    (if (string-empty-p path) (setq path "[[https://www.youtube.com/playlist?list=PLGYGe2PKknX2kydiv28aq8dBXBWeJfxgg][The Lion King 2019 soundtrack - YouTube]]"))
 
-  (let ((result (e/chomp (sh-notty (concat "ci yt-list-playlist-urls " (e/q path))))))
-    (if (called-interactively-p 'any)
-        (message result)
-      result)))
+    (let ((result (e/chomp (sh-notty (concat "ci yt-list-playlist-urls " (e/q path))))))
+      (if (called-interactively-p 'any)
+          (message result)
+        result)))
+
+  (defun fun (path)
+    (interactive (list (read-string "path:")))
+    "docstring"
+
+    (if (string-empty-p path) (setq path "defaultval"))
+
+    (let ((result (e/chomp (sh-notty (concat "ci yt-list-playlist-urls " (e/q path))))))
+      (if (called-interactively-p 'any)
+          ;; (message result)
+          (new-buffer-from-string result)
+        result)))
+#+END_SRC
