@@ -1,0 +1,21 @@
+* [#A] open-next-file
+| kb          | f              |
+|-------------+----------------|
+| M-l M-n M-n | open-next-file |
+
+** Both the macro and programmatic versions work
+#+BEGIN_SRC emacs-lisp :async :results verbatim drawer
+  (defun open-next-file ()
+    (interactive)
+    (ekm "M-m f d <up> RET")
+    ;; (let ((next-file (e/chomp (sh-notty (concat "next-file " (e/q (basename (current-file-name)))) nil (current-dir-name)))))
+    ;;   (find-file next-file))
+    )
+  
+  (defun open-prev-file ()
+    (interactive)
+    (ekm "M-m f d <down> RET")
+    ;; (let ((prev-file (e/chomp (sh-notty (concat "prev-file " (e/q (basename (current-file-name)))) nil (current-dir-name)))))
+    ;;   (find-file prev-file))
+    )
+#+END_SRC
