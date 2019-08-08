@@ -1,0 +1,33 @@
+* Append to each line
+Even shorter than the :search command:
+
+#+BEGIN_SRC text :async :results verbatim drawer
+  :%norm A*
+  This is what it means:
+  
+   %       = for every line
+   norm    = type the following commands
+   A*      = append '*' to the end of current line
+#+END_SRC
+
+* [#A] Shortcut
+
+#+BEGIN_SRC vimrc :async :results verbatim drawer
+  " Append to line
+  xnoremap A :%norm A
+#+END_SRC
+
+** [#A] Made it line-wise only
+#+BEGIN_SRC vimrc :async :results verbatim drawer
+  " Append to line
+  " xnoremap A :%norm A
+  
+  " Make it linewise-only
+  " v -> charwise
+  " V -> linewise
+  " C-v -> blockwise
+  xno <expr> A  {'v':      targets#e('A', 'A'),
+               \ 'V':      "\<esc>:norm A",
+               \ "\<c-v>": targets#e('A', 'A'),
+               \ }[mode()]
+#+END_SRC
