@@ -21,7 +21,7 @@ Even shorter than the :search command:
 #+BEGIN_SRC vimrc :async :results verbatim drawer
   " Append to line
   " xnoremap A :%norm A
-  
+
   " Make it linewise-only
   " v -> charwise
   " V -> linewise
@@ -30,4 +30,9 @@ Even shorter than the :search command:
                \ 'V':      "\<esc>:norm A",
                \ "\<c-v>": targets#e('A', 'A'),
                \ }[mode()]
+
+  " annoyingly, the targets function creates weird keyboard input reads / delays.
+  " xno <silent> <expr> A { 'v': targets#e('A', 'A'), 'V': ":norm A", "\<c-v>": targets#e('A', 'A') }[mode()]
+  " Therefore evaluate them in advance. It simply resolves to 'A'
+  xno <expr> A { 'v': "A", 'V': ":norm A", "\<c-v>": "A" }[mode()]
 #+END_SRC
