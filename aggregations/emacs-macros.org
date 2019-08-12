@@ -1,0 +1,14 @@
+* Nested backquote -- for making macros that generate defmacros
+#+BEGIN_SRC emacs-lisp :async :results verbatim drawer
+  (defmacro defshellfilter (&rest body)
+    "Define a new string filter function based on a shell command"
+    `(defmacro ,(str2sym (concat "sh/" (sym2str (first body))))
+         (&rest body)
+       (b ,@body ,',@body)))
+  
+  (defshellfilter xurls)
+  
+  (defmacro sh/xurls
+      (&rest body)
+    (b xurls ,@body))
+#+END_SRC
