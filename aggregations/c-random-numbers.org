@@ -1,0 +1,27 @@
+* populate an array with random numbers
+#+BEGIN_SRC c :async :results verbatim drawer
+  #include <time.h> // Needed to seed the random number generator
+  #include <stdlib.h>
+
+  // This will produce the same random numbers during the same second
+  srand(time(NULL));   // Initialization, should only be called once.
+
+  int size = 10;
+  int *elements = malloc(sizeof(int)*size);
+
+  // inizialize
+  for (int i = 0; i < size; ++i)
+       elements[i] = i;
+
+  for (int i = size - 1; i > 0; --i) {
+       // generate random index
+       int w = rand()%i;
+       // swap items
+       int t = elements[i];
+       elements[i] = elements[w];
+       elements[w] = t;
+  }
+#+END_SRC
+
+* bubble sort
+[[/home/shane/var/smulliga/source/git/acmeism/RosettaCodeData/Task/Sorting-algorithms-Bubble-sort/C/sorting-algorithms-bubble-sort.c][C/sorting-algorithms-bubble-sort.c]]
