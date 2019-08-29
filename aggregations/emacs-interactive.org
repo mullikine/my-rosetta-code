@@ -21,3 +21,10 @@
           (new-buffer-from-string result)
         result)))
 #+END_SRC
+
+* First letter of interactive argument is the type of thing it should read in
+#+BEGIN_SRC sh :async :results verbatim drawer
+  vim +/"(interactive \"cUndo-tree state to register: \")" "$EMACSD/packages26/undo-tree-20170706.246/undo-tree.el"
+#+END_SRC
+
+This reads in a character.
