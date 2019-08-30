@@ -1,0 +1,3 @@
+* A good example
+
+$EMACSD/packages26/yasnippet-snippets-20190316.1019/snippets/haskell-mode/import

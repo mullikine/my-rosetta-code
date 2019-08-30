@@ -1,3 +1,16 @@
+* advice
+As it turns out you need ~&rest r~
+
+#+BEGIN_SRC emacs-lisp :async :results verbatim drawer
+  ;; For some reason this needs arg as a parameter
+  ;; Advice functions must need to have at least one argument
+  (defun undo-tree-save-root (&rest r)
+    ;; (require 'undo-tree)
+    (undo-tree-save-state-to-register ?^))
+
+  (advice-add 'save-buffer :after 'undo-tree-save-root)
+#+END_SRC
+
 * after
 #+BEGIN_SRC emacs-lisp :async
   (advice-add
