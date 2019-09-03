@@ -27,4 +27,8 @@
   vim +/"(interactive \"cUndo-tree state to register: \")" "$EMACSD/packages26/undo-tree-20170706.246/undo-tree.el"
 #+END_SRC
 
+** Separate multiple arguments with "\n"
+#+BEGIN_SRC emacs-lisp :async :results verbatim drawer
+  (interactive "P\nbFrobnicate buffer: ")
+#+END_SRC
 This reads in a character.
