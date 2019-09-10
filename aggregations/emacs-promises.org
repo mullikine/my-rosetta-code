@@ -1,0 +1,6 @@
+* examples
+https://github.com/chuntaro/emacs-promise/blob/master/examples/promise-examples.el
+
+#+BEGIN_SRC sh :async :results verbatim drawer
+  sph sp $MYGIT/chuntaro/emacs-promise/examples/promise-examples.el
+#+END_SRC
