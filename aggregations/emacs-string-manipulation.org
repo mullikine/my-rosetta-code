@@ -1,6 +1,37 @@
-* emacs lisp
+* common functions
 #+BEGIN_SRC emacs-lisp :async
   (f-base "~/doc/index.org")
   (f-no-ext "~/doc/index.org")
   (s-chop-suffix ".org" "~/doc/index.org")
+#+END_SRC
+
+* example -- string filter function
+#+BEGIN_SRC emacs-lisp :async :results verbatim drawer
+  (defun eww--dwim-expand-url (url)
+    (setq url (string-trim url))
+    (cond ((string-match-p "\\`file:/" url))
+  	;; Don't mangle file: URLs at all.
+          ((string-match-p "\\`ftp://" url)
+           (user-error "FTP is not supported"))
+          (t
+  	 ;; Anything that starts with something that vaguely looks
+  	 ;; like a protocol designator is interpreted as a full URL.
+           (if (or (string-match "\\`[A-Za-z]+:" url)
+  		 ;; Also try to match "naked" URLs like
+  		 ;; en.wikipedia.org/wiki/Free software
+  		 (string-match "\\`[A-Za-z_]+\\.[A-Za-z._]+/" url)
+  		 (and (= (length (split-string url)) 1)
+  		      (or (and (not (string-match-p "\\`[\"'].*[\"']\\'" url))
+  			       (> (length (split-string url "[.:]")) 1))
+  			        (string-match eww-local-regex url))))
+               (progn
+                 (unless (string-match-p "\\`[a-zA-Z][-a-zA-Z0-9+.]*://" url)
+                   (setq url (concat "http://" url)))
+                 ;; Some sites do not redirect final /
+                 (when (string= (url-filename (url-generic-parse-url url)) "")
+                   (setq url (concat url "/"))))
+             (setq url (concat eww-search-prefix
+                               (mapconcat
+                                #'url-hexify-string (split-string url) "+"))))))
+    url)
 #+END_SRC
