@@ -1,0 +1,41 @@
+* sh-notty
+#+BEGIN_SRC emacs-lisp :async :results verbatim drawer
+  (defun q (string)
+    (let ((print-escape-newlines t))
+      (prin1-to-string string)))
+  
+  (defun sh-notty (&optional cmd stdin dir detach output_buffer)
+    "Runs command in shell and return the result. This appears to strip ansi codes."
+    (interactive)
+    (if (not cmd)
+        (setq cmd "false"))
+  
+    (if (not dir)
+        (setq dir (get-dir)))
+  
+    (let ((default-directory dir))
+  
+      (setq tf (make-temp-file "elisp_bash"))
+      (setq tf_exit_code (make-temp-file "elisp_bash_exit_code"))
+  
+      (setq final_cmd (concat "( cd " (q dir) "; " cmd "; echo -n $? > " tf_exit_code " ) > " tf))
+  
+      (if detach
+          (setq final_cmd (concat "trap '' HUP; unbuffer bash -c " (q final_cmd) " &")))
+  
+      (if (not stdin)
+          (shell-command final_cmd output_buffer)
+        (with-temp-buffer
+          (insert stdin)
+          (shell-command-on-region (point-min) (point-max) final_cmd output_buffer)))
+      (setq output (get-string-from-file tf))
+  
+      (progn
+        (defvar b_exit_code nil)
+        (setq b_exit_code
+              (get-string-from-file tf_exit_code)))
+  
+      output))
+  
+  (sh-notty "sed 's/[a-z]/_/g'" "hello there")
+#+END_SRC
