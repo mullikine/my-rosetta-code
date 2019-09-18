@@ -12,6 +12,18 @@ https://krsoninikhil.github.io/2018/12/15/easy-moving-from-vscode-to-emacs/
   vim +/"\*\* navigation" "$NOTES/remember.org"
 #+END_SRC
 
+** start of line
+#+BEGIN_SRC emacs-lisp :async :results verbatim drawer
+  ;; Go to start of line
+  (backward-to-indentation 0)
+
+  ;; Go to start of and move back a line
+  (backward-to-indentation 1)
+
+  ;; Go to start of and move back 2 lines
+  (backward-to-indentation 2)
+#+END_SRC
+
 ** navigation
 #+BEGIN_SRC sh
   cd "$EMACSD/config"; ead save-excursion
