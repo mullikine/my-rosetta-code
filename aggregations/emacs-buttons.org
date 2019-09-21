@@ -1,0 +1,23 @@
+* 
+https://mullikine.github.io/posts/emacs-packages-21.09.19/
+
+#+BEGIN_SRC emacs-lisp :async :results verbatim drawer
+  (define-button-type 'helpful-all-references-button
+    'action #'helpful--all-references
+    'symbol nil
+    'callable-p nil
+    'follow-link t
+    'help-echo "Find all references to this symbol")
+
+  (defun helpful--all-references (button)
+    "Find all the references to the symbol that this BUTTON represents."
+    (let ((sym (button-get button 'symbol))
+          (callable-p (button-get button 'callable-p)))
+      (cond
+       ((not callable-p)
+        (elisp-refs-variable sym))
+       ((functionp sym)
+        (elisp-refs-function sym))
+       ((macrop sym)
+        (elisp-refs-macro sym)))))
+#+END_SRC
