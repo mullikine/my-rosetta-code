@@ -5,6 +5,17 @@
   (s-chop-suffix ".org" "~/doc/index.org")
 #+END_SRC
 
+* examples
+#+BEGIN_SRC emacs-lisp :async :results verbatim drawer
+  (defun current-major-mode-map ()
+    (let ((sym (string2symbol (concat (current-major-mode) "-map"))))
+      (if (not (boundp sym))
+          (setq sym (string2symbol (concat (s-chop-suffix "-mode" (current-major-mode)) "-map"))))
+      (if (not (boundp sym))
+          (setq sym nil))
+      sym))
+#+END_SRC
+
 * example -- string filter function
 #+BEGIN_SRC emacs-lisp :async :results verbatim drawer
   (defun eww--dwim-expand-url (url)
