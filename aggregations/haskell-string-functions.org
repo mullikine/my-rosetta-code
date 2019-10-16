@@ -1,0 +1,10 @@
+* clean
+#+BEGIN_SRC sh :async :results verbatim drawer
+  vim +/"clean" "$MYGIT/gwern/misc-haskell/CLIUtils.hs"
+#+END_SRC
+
+#+BEGIN_SRC haskell :async :results verbatim drawer
+  -- remove leading space from each line
+  clean, clean', clean'' :: [String] -> [String]
+  clean = map (dropWhile isSpace)
+#+END_SRC
