@@ -1,0 +1,4 @@
+* optional arguments
+(cl-defun tv-message (thing &key (f 'identity) &key (m "tvm: "))
+  (se (lambda (thing) (message "%s" (concat m (str (run f thing))))) thing)
+  )
