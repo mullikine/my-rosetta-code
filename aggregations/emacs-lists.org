@@ -1,3 +1,16 @@
+* what is a list
+
+A list in emacs is a list of cons cells.
+A cons cell has a car and a cdr.
+The car is a value.
+The cdr is a pointer.
+
+** e.g. This allows you to set the nth item of a list
+#+BEGIN_SRC emacs-lisp :async :results verbatim code
+  (setcar (nthcdr 2 list) 'epsilon)
+#+END_SRC
+
+* Useful pages
 https://www.emacswiki.org/emacs/ListModification#toc7
 
 * append to list
@@ -13,13 +26,16 @@ https://www.emacswiki.org/emacs/ListModification#toc7
 
 
 * functions
-| f                 | mod orig | dedup (slow) | d                                                 |
-|-------------------+----------+--------------+---------------------------------------------------|
-| delete            | ✓        |              | removes all matching elements from list           |
-| remove            |          |              | same as 'delete'                                  |
-| add-to-list       | ✓        | ✓            | push element to front                             |
-| remove-duplicates | ✓        |              |                                                   |
-| append            |          |              | concatenates lists into new list                  |
+mode orig = destructive.
+
+| f                 | mod orig | dedup (slow) | d                                       |
+|-------------------+----------+--------------+-----------------------------------------|
+| delete            | ✓        |              | removes all matching elements from list |
+| remove            |          |              | same as 'delete'                        |
+| add-to-list       | ✓        | ✓            | push element to front                   |
+| remove-duplicates |          |              | dedups                                  |
+| delete-duplicates | ✓        |              | same as remove-duplicates               |
+| append            |          |              | concatenates lists into new list        |
 
 ** Other functions
 | f     | mod orig | dedup (slow) | d                                                 |
