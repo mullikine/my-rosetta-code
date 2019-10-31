@@ -1,3 +1,5 @@
+https://www.emacswiki.org/emacs/ListModification#toc7
+
 * append to list
 #+BEGIN_SRC emacs-lisp :async :results verbatim code
   (append (list beg
@@ -7,4 +9,32 @@
                 temp                      ; output
                 nil)
           (hindent-extra-arguments))
+#+END_SRC
+
+
+* functions
+| f                 | mod orig | dedup (slow) | d                                                 |
+|-------------------+----------+--------------+---------------------------------------------------|
+| delete            | ✓        |              | removes all matching elements from list           |
+| remove            |          |              | same as 'delete'                                  |
+| add-to-list       | ✓        | ✓            | push element to front                             |
+| remove-duplicates | ✓        |              |                                                   |
+| append            |          |              | concatenates lists into new list                  |
+
+** Other functions
+| f     | mod orig | dedup (slow) | d                                                 |
+|-------+----------+--------------+---------------------------------------------------|
+| nconc |          |              | Concatenate any number of lists by altering them. |
+*** =nconc=
+This function doesn't necessarily result in a new list.
+Is it really a list alteration function then?
+
+** Examples
+#+BEGIN_SRC emacs-lisp :async :results verbatim code
+  (delete 'beta list1)
+  (remove 'beta list1)
+  (add-to-list 'list1 'omega)
+  (remove-duplicates list1 :test 'string=)
+  (nconc list1 list2)
+  (append list1 list2)
 #+END_SRC
