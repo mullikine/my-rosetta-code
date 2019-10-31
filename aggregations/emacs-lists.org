@@ -13,29 +13,18 @@ The cdr is a pointer.
 * Useful pages
 https://www.emacswiki.org/emacs/ListModification#toc7
 
-* append to list
-#+BEGIN_SRC emacs-lisp :async :results verbatim code
-  (append (list beg
-                end
-                hindent-process-path
-                nil                       ; delete
-                temp                      ; output
-                nil)
-          (hindent-extra-arguments))
-#+END_SRC
-
-
 * functions
 mode orig = destructive.
 
-| f                 | mod orig | dedup (slow) | d                                       |
-|-------------------+----------+--------------+-----------------------------------------|
-| delete            | ✓        |              | removes all matching elements from list |
-| remove            |          |              | same as 'delete'                        |
-| add-to-list       | ✓        | ✓            | push element to front                   |
-| remove-duplicates |          |              | dedups                                  |
-| delete-duplicates | ✓        |              | same as remove-duplicates               |
-| append            |          |              | concatenates lists into new list        |
+| f/m               | mod orig | macro | dedup (slow) | d                                       |
+|-------------------+----------+-------+--------------+-----------------------------------------|
+| delete            | ✓        |       |              | removes all matching elements from list |
+| remove            |          |       |              | same as 'delete'                        |
+| add-to-list       | ✓        |       | ✓            | push element to front                   |
+| push              | ?        | ✓     | ?            | push element to front                   |
+| remove-duplicates |          |       |              | dedups                                  |
+| delete-duplicates | ✓        |       |              | same as remove-duplicates               |
+| append            |          |       |              | concatenates lists into new list        |
 
 ** Other functions
 | f     | mod orig | dedup (slow) | d                                                 |
@@ -50,6 +39,7 @@ Is it really a list alteration function then?
   (delete 'beta list1)
   (remove 'beta list1)
   (add-to-list 'list1 'omega)
+  (push newcar list1)
   (remove-duplicates list1 :test 'string=)
   (nconc list1 list2)
   (append list1 list2)
