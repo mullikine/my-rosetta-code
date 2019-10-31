@@ -1,0 +1,10 @@
+* append to list
+#+BEGIN_SRC emacs-lisp :async :results verbatim code
+  (append (list beg
+                end
+                hindent-process-path
+                nil                       ; delete
+                temp                      ; output
+                nil)
+          (hindent-extra-arguments))
+#+END_SRC
