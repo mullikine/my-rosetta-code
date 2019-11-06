@@ -1,4 +1,6 @@
 * common functions
+replace-regexp-in-string
+
 #+BEGIN_SRC emacs-lisp :async
   (f-base "~/doc/index.org")
   (f-no-ext "~/doc/index.org")
