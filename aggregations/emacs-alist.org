@@ -1,0 +1,19 @@
+* emacs
+** iterate over alist
+#+BEGIN_SRC emacs-lisp -n :async :results verbatim code
+  (defun term-send-function-key ()
+    (interactive)
+    (let* ((char last-input-event)
+           (output (cdr (assoc char term-function-key-alist))))
+      (term-send-raw-string output)))
+  
+  (defconst term-function-key-alist '((f1 . "\e[OP")
+                                      (f2 . "\e[OQ")
+                                      (f3 . "\e[OR")
+                                      (f4 . "\e[OS")))
+  
+  (dolist (spec term-function-key-alist)
+    (define-key term-raw-map
+      (read-kbd-macro (format "<%s>" (car spec)))
+      'term-send-function-key))
+#+END_SRC
