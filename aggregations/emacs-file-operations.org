@@ -1,0 +1,15 @@
+* emacs lisp
+** file operations
+#+BEGIN_SRC emacs-lisp -n :async :results verbatim code
+  (defun cat-to-file (stdin file_path)
+    (sh-notty
+     (concat "cat > " (q file_path)) stdin))
+  (defalias 'write-string-to-file 'cat-to-file)
+  (defalias 'write-to-file 'cat-to-file)
+  
+  (defun append-to-file (stdin file_path)
+    (sh-notty
+     (concat "cat >> " (q file_path)) stdin))
+  (defalias 'append-string-to-file 'cat-to-file)
+  (defalias 'append-to-file 'cat-to-file)
+#+END_SRC
