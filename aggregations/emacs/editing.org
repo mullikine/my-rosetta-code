@@ -1,0 +1,8 @@
+* DONE Find how to do this and remember it
+#+BEGIN_SRC sh -n :sph bash :async :results none
+  egr emacs check regex at point
+#+END_SRC
+
+#+BEGIN_SRC es -n :async :results verbatim code
+  (looking-at REGEXP)
+#+END_SRC
