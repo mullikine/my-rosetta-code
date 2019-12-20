@@ -1,0 +1,15 @@
+* Locally disable global mode
+#+BEGIN_SRC emacs-lisp -n :async :results verbatim code
+  (defun spacemacs/disable-hl-line-mode ()
+    "Locally disable global-hl-line-mode"
+    (interactive)
+    (setq-local global-hl-line-mode nil))
+#+END_SRC
+
+#+BEGIN_SRC grep -n :async :results verbatim code
+  ./funcs.el:18:(defun spacemacs/disable-hl-line-mode ()
+  ./packages.el:34:  (add-hook 'comint-mode-hook 'spacemacs/disable-hl-line-mode))
+  ./packages.el:84:      (add-hook 'eshell-mode-hook 'spacemacs/disable-hl-line-mode))
+  ./packages.el:193:  (add-hook 'shell-mode-hook 'spacemacs/disable-hl-line-mode))
+  ./packages.el:243:  (add-hook 'term-mode-hook 'spacemacs/disable-hl-line-mode))
+#+END_SRC
