@@ -1,0 +1,4 @@
+* extract substring
+#+BEGIN_SRC sh -n :sps bash :async :results none
+  vim +/"return tolower(substitute(getline(1), \"^\\\\\\\\(\[^ \]\\\\\\\\+\\\\\\\\).\*\", \"\\\\\\\\1\", \"\"))" "$VIMCONFIG/vimrc"
+#+END_SRC
