@@ -1,4 +1,8 @@
 * May be used in emacs lisp like so
+Also, could this be useful here?
+$MYGIT/alphapapa/elexandria/elexandria.el
+https://github.com/alphapapa/elexandria/blob/a22b12f3472baa617545d2f247ea41f5ef70a488/elexandria.el#L103
+
 #+BEGIN_SRC emacs-lisp -n :async :results verbatim code
   (defun update-hosts-file ()
     (interactive)
