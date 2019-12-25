@@ -1,5 +1,5 @@
 * May be used in emacs lisp like so
-#+BEGIN_SRC bash -n :async :results verbatim code
+#+BEGIN_SRC emacs-lisp -n :async :results verbatim code
   (defun update-hosts-file ()
     (interactive)
     ;; make a backup in case something goes wrong
