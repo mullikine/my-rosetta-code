@@ -1,4 +1,4 @@
-* what is a list
+* What is a list?
 A list in emacs is a list of cons cells.
 A cons cell has a car and a cdr.
 The car is a value.
