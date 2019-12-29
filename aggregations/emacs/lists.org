@@ -1,5 +1,4 @@
 * what is a list
-
 A list in emacs is a list of cons cells.
 A cons cell has a car and a cdr.
 The car is a value.
@@ -9,6 +8,12 @@ The cdr is a pointer.
 #+BEGIN_SRC emacs-lisp :async :results verbatim code
   (setcar (nthcdr 2 list) 'epsilon)
 #+END_SRC
+
+* libraries
+| name            | provides             |
+|-----------------+----------------------|
+| dash            | list functions       |
+| dash-functional | function combinators |
 
 * Useful pages
 https://www.emacswiki.org/emacs/ListModification#toc7
