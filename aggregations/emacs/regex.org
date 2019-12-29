@@ -1,0 +1,13 @@
+* capture groups
+#+BEGIN_SRC sh -n :sps bash :async :results none
+  sp "$HOME/.emacs.d/snippets/emacs-lisp-mode/capture group"
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp -n :async :results verbatim code
+  (s-replace-regexp "^(\\(.*\\))$" "\\1" "(https://github.com/abo-abo/zoutline)")
+#+END_SRC
+
+#+RESULTS:
+#+BEGIN_SRC emacs-lisp
+"\"https://github.com/abo-abo/zoutline\""
+#+END_SRC
