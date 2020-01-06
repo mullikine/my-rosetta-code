@@ -12,3 +12,20 @@
       (&rest body)
     (b xurls ,@body))
 #+END_SRC
+
+** Recursive macros
+*** how would you write such a recursive macro in general
+
+You wouldn't. Emacs Lisp isn't optimized for
+recursive routines. Using dotimes would be
+much faster for your example.
+
+Specifically to address your example, your
+macro is wrong. You want this instead:
+
+#+BEGIN_SRC emacs-lisp -n :async :results verbatim code
+  (defmacro recurse-macro (thing arg times)
+    (if (eq times 0)
+        thing
+      `(recurse-macro ,thing (,thing ,arg) (- ,times 1))))
+#+END_SRC
