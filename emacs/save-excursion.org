@@ -1,4 +1,4 @@
-| name                  | type     | description                                                                          |
+| name                  | type     | description                                                               |
 |-----------------------+----------+---------------------------------------------------------------------------|
 | save-current-buffer   | Function | Record which buffer is current; execute BODY; make that buffer current.   |
 | save-excursion        | Function | Save point, mark, and current buffer; execute BODY; restore those things. |
