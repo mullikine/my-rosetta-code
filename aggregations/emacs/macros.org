@@ -13,8 +13,8 @@
     (b xurls ,@body))
 #+END_SRC
 
-** Recursive macros
-*** how would you write such a recursive macro in general
+* Recursive macros
+** how would you write such a recursive macro in general
 
 You wouldn't. Emacs Lisp isn't optimized for
 recursive routines. Using dotimes would be
