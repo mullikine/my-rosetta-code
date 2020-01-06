@@ -1,0 +1,22 @@
+* pcase
+https://www.emacswiki.org/emacs/PatternMatching
+
+#+BEGIN_SRC emacs-lisp -n :async :results verbatim code
+  (defun recip (n)
+    (pcase n
+      (`0 (error "Can't divide by zero"))
+      (n (/ 1.0 n))))
+  
+  (recip 0)
+#+END_SRC
+
+* pattern matching in cl-loop
+#+BEGIN_SRC emacs-lisp -n :async :results verbatim code
+  (cl-loop for (r . m) in auto-mode-alist
+                            when (string-match r candidate)
+                            return m)
+#+END_SRC
+
+#+BEGIN_SRC sh -n :sps bash :async :results none
+  egr pattern matching loop common lisp
+#+END_SRC
