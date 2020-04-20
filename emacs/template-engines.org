@@ -1,0 +1,12 @@
+* emacs lisp
+** template processor
+#+BEGIN_SRC emacs-lisp -n :async :results verbatim code
+  (let ((username "John Kitchin")
+           (somevar (sqrt 5)))
+       (s-lex-format "hi ${username}${somevar} hi ${username}"))
+#+END_SRC
+
+#+RESULTS:
+#+BEGIN_SRC emacs-lisp
+"\"hi John Kitchin2.23606797749979 hi John Kitchin\""
+#+END_SRC
