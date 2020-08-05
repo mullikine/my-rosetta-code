@@ -13,19 +13,16 @@ https://clojuredocs.org/clojure.core/re-groups
   (defn get-capture-groups [p s]
     (re-find (re-matcher (re-pattern p) s)))
 
-  (print (get-capture-groups "(\d+)\.(\d+)\.(\d+)" "01.01.20.txt"))
+  (println (get-capture-groups "(\\d+)\\.(\\d+)\\.(\\d+)" "01.01.20.txt"))
 
   (defn get-capture-groups-pat [p s]
     (re-find (re-matcher p s)))
 
-  (print (get-capture-groups-pat #"(\d+)\.(\d+)\.(\d+)" "01.01.20.txt"))
+  (println (get-capture-groups-pat #"(\d+)\.(\d+)\.(\d+)" "01.01.20.txt"))
 #+END_SRC
 
 #+RESULTS:
 #+BEGIN_SRC clojure
-Syntax error reading source at (/tmp/babel-AyFhjc/generic-oU904C:4:32).
-Unsupported escape character: \d
-
-Full report at:
-/tmp/clojure-7525592767146253801.edn
+[01.01.20 01 01 20]
+[01.01.20 01 01 20]
 #+END_SRC
