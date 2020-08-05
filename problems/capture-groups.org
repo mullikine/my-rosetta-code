@@ -1,0 +1,15 @@
+* learn to do capture groups
+** python
+#+BEGIN_SRC python -n :i python3.6 :async :results verbatim code
+  import re
+  # This gets the first group
+  re.match(r"(\d+)\.(\d+)\.(\d+)", "01.01.20.txt").groups()[0]
+#+END_SRC
+
+** clojure
+https://clojuredocs.org/clojure.core/re-groups
+
+#+BEGIN_SRC clojure -n :i clj :async :results verbatim code
+  (defn date-matcher [d] (re-matcher #"(\d+)\.(\d+)\.(\d+)" d))
+  (re-find (date-matcher "01.01.20.txt"))
+#+END_SRC
