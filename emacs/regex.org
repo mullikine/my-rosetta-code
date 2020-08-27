@@ -11,3 +11,12 @@
 #+BEGIN_SRC emacs-lisp
 "\"https://github.com/abo-abo/zoutline\""
 #+END_SRC
+
+#+BEGIN_SRC emacs-lisp -n :async :results verbatim code
+  (s-replace-regexp "^http.*//libraries.io/[^/]+/" "" "https://libraries.io/go/github.com%2Fanykao%2Fs%2Fproviders%2Flibgen")
+#+END_SRC
+
+#+RESULTS:
+#+BEGIN_SRC emacs-lisp
+"\"github.com%2Fanykao%2Fs%2Fproviders%2Flibgen\""
+#+END_SRC
