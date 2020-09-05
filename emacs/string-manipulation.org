@@ -1,5 +1,5 @@
 * common functions
-replace-regexp-in-string
+=replace-regexp-in-string=
 
 #+BEGIN_SRC emacs-lisp :async
   (f-base "~/doc/index.org")
