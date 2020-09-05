@@ -48,3 +48,7 @@
                                 #'url-hexify-string (split-string url) "+"))))))
     url)
 #+END_SRC
+
+#+BEGIN_SRC emacs-lisp -n :async :results verbatim code
+  (mu (s-replace-regexp "^$DUMP\\(.*\\)$" "\\1" "/home/shane/dump/home/shane/notes"))
+#+END_SRC
