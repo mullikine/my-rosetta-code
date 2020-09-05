@@ -49,6 +49,7 @@
     url)
 #+END_SRC
 
+** Remove from start
 #+BEGIN_SRC emacs-lisp -n :async :results verbatim code
   (mu (s-replace-regexp "^$DUMP\\(.*\\)$" "\\1" "/home/shane/dump/home/shane/notes"))
 #+END_SRC
