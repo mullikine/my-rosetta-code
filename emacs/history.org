@@ -1,0 +1,15 @@
+#+BEGIN_SRC emacs-lisp -n :async :results verbatim code
+  (defvar search-ring nil
+  "List of search string sequences.")
+  (defvar regexp-search-ring nil
+    "List of regular expression search string sequences.")
+  (defun isearch-update-ring (string &optional regexp)
+    "Add STRING to the beginning of the search ring.
+  REGEXP if non-nil says use the regexp search ring."
+    (let ((history-delete-duplicates t))
+      (add-to-history
+       (if regexp 'regexp-search-ring 'search-ring)
+       (isearch-string-propertize string)
+       (if regexp regexp-search-ring-max search-ring-max)
+       t)))
+#+END_SRC
