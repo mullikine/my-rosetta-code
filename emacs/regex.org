@@ -20,3 +20,9 @@
 #+BEGIN_SRC emacs-lisp
 "\"github.com%2Fanykao%2Fs%2Fproviders%2Flibgen\""
 #+END_SRC
+
+* Sed or builtin
+#+BEGIN_SRC emacs-lisp -n :async :results verbatim code
+  (sed "s/./& /g" kb)
+  (s-replace-regexp "\\(.\\)" "\\1 " kb)
+#+END_SRC
