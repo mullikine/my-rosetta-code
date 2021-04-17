@@ -1,0 +1,7 @@
+* Completing read alteratives
+
+#+BEGIN_SRC emacs-lisp -n :async :results verbatim code
+  (ivy-read "Info for artist: "
+              (mapcar #'car (lastfm-artist-search artist))
+              :action #'vuiet-artist-info)
+#+END_SRC

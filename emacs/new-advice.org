@@ -1,3 +1,21 @@
+* managing advice
+** old advice
+#+BEGIN_SRC sh -n :sps z-repl-fp :async :results none
+  j ad-disable-advice
+  j helm-manage-advice
+#+END_SRC
+
+** New advice
+#+BEGIN_SRC sh -n :sps bash :async :results none
+  # Select the advised function to remove advice from it
+  j advice-unadvice
+#+END_SRC
+
+#+BEGIN_SRC sh -n :sps bash :async :results none
+  # This may work similarly to above
+  j advice-remove-all-from
+#+END_SRC
+
 * advice
 As it turns out you need ~&rest r~
 
